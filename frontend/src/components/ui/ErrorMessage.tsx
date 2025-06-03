@@ -7,9 +7,9 @@ interface ErrorMessageProps {
 const ErrorMessage: React.FC<ErrorMessageProps> = ({ message }) => {
   if (!message) return null;
   return (
-    <div style={{ color: 'red', marginTop: '10px', padding: '10px', border: '1px solid red', borderRadius: '4px', backgroundColor: '#ffebee' }}>
-      <p><strong>Error:</strong> {message}</p>
-    </div>
+    <div className="text-red-600 bg-red-50 p-3 border border-red-200 rounded-md">
+      <p className="font-semibold">Error: {message}</p>
+      </div>
   );
 };
 export default ErrorMessage;

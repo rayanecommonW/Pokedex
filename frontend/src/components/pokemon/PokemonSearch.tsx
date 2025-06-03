@@ -41,21 +41,21 @@ const PokemonSearch: React.FC = () => {
   };
 
   return (
-    <div className="pokemon-search-interface" style={{ padding: '20px', maxWidth: '500px', margin: '20px auto', boxShadow: '0 0 10px rgba(0,0,0,0.1)', borderRadius: '8px' }}>
-      <h1 style={{ textAlign: 'center' }}>Pokédex</h1>
-      <div className="search-controls" style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+    <div className="p-5 max-w-xl mx-auto shadow-md rounded-lg">
+      <h1 className="text-center text-3xl font-bold mb-6">Pokédex</h1>
+      <div className="flex gap-3 mb-5">
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyPress={handleKeyPress}
           placeholder="Enter Pokémon Name or ID"
-          style={{ flexGrow: 1, padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }}
+          className="flex-grow p-2.5 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
         />
-        <button 
-          onClick={handleSearch} 
+        <button
+          onClick={handleSearch}
           disabled={loading || !searchTerm.trim()}
-          style={{ padding: '10px 15px', borderRadius: '4px', border: 'none', backgroundColor: '#3498db', color: 'white', cursor: 'pointer' }}
+          className="px-4 py-2.5 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading ? 'Searching...' : 'Search'}
         </button>

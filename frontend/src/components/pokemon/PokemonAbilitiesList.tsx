@@ -1,7 +1,7 @@
 // Lists Pokémon abilities
 
 import React from 'react';
-import type { PokemonAbilityInfo } from '../../models/pokemon.models'; // Adjust path
+import type { PokemonAbilityInfo } from '../../models/pokemon.models';
 
 interface PokemonAbilitiesListProps {
   abilities: PokemonAbilityInfo[];

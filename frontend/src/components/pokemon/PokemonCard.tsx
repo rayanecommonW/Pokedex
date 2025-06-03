@@ -14,8 +14,8 @@ interface PokemonCardProps {
 
 const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
   return (
-    <div className="pokemon-card-details" style={{ border: '1px solid #ddd', borderRadius: '8px', padding: '15px', marginTop: '20px', backgroundColor: '#f9f9f9' }}>
-      <h2 style={{ textAlign: 'center', textTransform: 'capitalize', margin: '0 0 10px 0' }}>
+    <div className="border border-gray-200 rounded-lg p-4 mt-5 bg-gray-50">
+      <h2 className="text-center capitalize text-lg font-semibold mb-2">
         {pokemon.name} (#{pokemon.id})
       </h2>
       <PokemonImage sprites={pokemon.sprites} altName={pokemon.name} />
