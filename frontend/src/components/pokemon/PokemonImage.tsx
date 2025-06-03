@@ -16,7 +16,8 @@ const PokemonImage: React.FC<PokemonImageProps> = ({ sprites, altName, className
     sprites.other?.dream_world?.front_default ||
     sprites.front_default;
 
-  const placeholderUrl = `https://placehold.co/150x150/EEE/333?text=${altName.substring(0,10)}`;
+  const placeholderText = encodeURIComponent(altName.substring(0,10));
+  const placeholderUrl = `https://placehold.co/150x150/EEE/333?text=${placeholderText}`;
 
   return (
     <img

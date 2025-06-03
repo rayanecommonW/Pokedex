@@ -8,7 +8,7 @@ import { PokemonResponseDto } from './pokemon/dto/pokemon-response.dto';
 @Injectable()
 export class PokemonService {
   private readonly logger = new Logger(PokemonService.name); // Logger for this service
-  private readonly pokeApiBaseUrl = 'https://pokeapi.co/api/v2/pokemon/';
+  private readonly pokeApiBaseUrl = 'https://pokeapi.co/api/v2/pokemon/'; // could put this in .env ngl
 
   constructor(private readonly httpService: HttpService) {}
 
@@ -33,19 +33,18 @@ export class PokemonService {
               this.logger.warn(`Pokemon with identifier "${lookupIdentifier}" not found at PokeAPI.`);
               throw new NotFoundException(`Pokemon with identifier "${lookupIdentifier}" not found.`);
             }
-            // Log detailed error information from PokeAPI
+
+            // Classic error handling
             this.logger.error(`PokeAPI request failed for identifier "${lookupIdentifier}": Status ${error.response?.status}`, error.response?.data || error.message);
             throw new HttpException(
               'Failed to fetch data from PokeAPI',
-              HttpStatus.SERVICE_UNAVAILABLE, // More specific error for external service issues
+              HttpStatus.SERVICE_UNAVAILABLE,
             );
           }),
         ),
       );
 
       // Map the raw data from PokeAPI to our PokemonResponseDto.
-      // This transformation step is crucial for decoupling our API from the external API's structure
-      // and for selecting only the data we need.
       const pokemonData: PokemonResponseDto = {
         id: rawPokemonData.id,
         name: rawPokemonData.name,
@@ -63,15 +62,17 @@ export class PokemonService {
         abilities: rawPokemonData.abilities, // Assuming structure matches
         stats: rawPokemonData.stats,         // Assuming structure matches
       };
+
+      // More logging
       this.logger.log(`Successfully fetched and transformed data for Pokémon: ${pokemonData.name} (#${pokemonData.id})`);
       return pokemonData;
 
     } catch (error) {
-      // Handle errors already processed (NotFoundException, HttpException from catchError)
+      
+      // More error handling
       if (error instanceof NotFoundException || error instanceof HttpException) {
         throw error;
       }
-      // Catch any other unexpected errors
       this.logger.error(`Unexpected error in findOneByIdentifier for "${lookupIdentifier}":`, error);
       throw new HttpException(
         'An unexpected internal error occurred',
