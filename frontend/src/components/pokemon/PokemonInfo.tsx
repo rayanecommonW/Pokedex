@@ -9,9 +9,9 @@ interface PokemonInfoProps {
 
 const PokemonInfo: React.FC<PokemonInfoProps> = ({ height, weight }) => {
   return (
-    <div className="pokemon-physical-info">
-      <p><strong>Height:</strong> {height / 10} m</p>
-      <p><strong>Weight:</strong> {weight / 10} kg</p>
+    <div className="text-sm text-gray-600 space-y-1 my-4">
+      <p><strong className="font-medium text-gray-700">Height:</strong> {height / 10} m</p>
+      <p><strong className="font-medium text-gray-700">Weight:</strong> {weight / 10} kg</p>
     </div>
   );
 };

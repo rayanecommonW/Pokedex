@@ -3,7 +3,7 @@ import { Controller, Get, Param, NotFoundException, HttpException, HttpStatus, B
 import { PokemonService } from './pokemon.service';
 import { PokemonResponseDto } from './pokemon/dto/pokemon-response.dto';
 
-@Controller('pokemon') // Defines the base route for all handlers in this controller (e.g., /pokemon)
+@Controller('pokemon') // this means the handler will be at /pokemon
 export class PokemonController {
   private readonly logger = new Logger(PokemonController.name);
 
@@ -11,9 +11,7 @@ export class PokemonController {
 
   /**
    * Handles GET requests to /pokemon/:identifier
-   * :identifier can be a Pokémon's name (string) or ID (number).
-   * @param identifier The path parameter representing the Pokémon's name or ID.
-   * @returns A Promise resolving to the Pokémon data.
+   * name or id
    */
   @Get(':identifier')
   async findOne(@Param('identifier') identifier: string): Promise<PokemonResponseDto> {
@@ -25,8 +23,7 @@ export class PokemonController {
       throw new BadRequestException('Pokémon identifier cannot be empty.');
     }
 
-    // The service will handle if it's a name or ID.
-    // No need to parse to int here, service can handle mixed type.
+    // The service will handle if it's a name or ID it can handle mixed type.
     try {
       const pokemonData = await this.pokemonService.findOneByIdentifier(identifier);
       return pokemonData;

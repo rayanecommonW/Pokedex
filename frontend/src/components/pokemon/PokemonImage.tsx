@@ -22,7 +22,7 @@ const PokemonImage: React.FC<PokemonImageProps> = ({ sprites, altName, className
     <img
       src={imageUrl || placeholderUrl}
       alt={`Image of ${altName}`}
-      className={className || "pokemon-sprite-image"}
+      className={className || "w-[150px] h-auto block mx-auto my-3"}
       onError={(e) => {
         // If the primary image fails to load, try the basic front_default as a last resort
         if (imageUrl !== sprites.front_default && sprites.front_default) {
@@ -32,7 +32,6 @@ const PokemonImage: React.FC<PokemonImageProps> = ({ sprites, altName, className
             (e.target as HTMLImageElement).src = placeholderUrl;
         }
       }}
-      style={{ maxWidth: '150px', height: 'auto', display: 'block', margin: '10px auto' }}
     />
   );
 };
