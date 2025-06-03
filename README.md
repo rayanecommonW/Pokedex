@@ -1,5 +1,5 @@
 
-Sup, this is my take on a pokedex app. I'm using React and nestJS full ypescript and PokeAPI found at https://pokeapi.co.
+Sup, this is my take on a pokedex app. I'm using React and nestJS (Typescript ofc) and PokeAPI found at https://pokeapi.co.
 
 This document will guide you through setting up and running both the backend and frontend components of this application.
 
