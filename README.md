@@ -1,11 +1,11 @@
 
-Sup, this is my take on a pokedex app. I'm using React and nestJS (Typescript ofc) and PokeAPI found at https://pokeapi.co.
+Hello, this is my take on a pokedex app. I'm using React and nestJS (fully Typescript) and the PokeAPI found at https://pokeapi.co.
 
 This document will guide you through setting up and running both the backend and frontend components of this application.
 
 ## Prerequisites
 
-Make sure you install nodejs duh
+Make sure you install nodejs at https://nodejs.org/en
 
 ## Backend Setup
 
@@ -25,8 +25,7 @@ Follow these steps to get the backend up and running:
     ```bash
     npm run start:dev
     ```
-    Boom ez
-
+    
 ## Frontend Setup
 
 Here's how to get the frontend running:
@@ -48,6 +47,6 @@ Here's how to get the frontend running:
 
 ## Accessing the Application
 
-Once both the backend and frontend servers are running go to `http://localhost:5173` and boom it works
+Once both the backend and frontend servers are running go to `http://localhost:5173` and boom it works, easy right?
 
-Drop a like plzz
+Drop a star if also hate scalpers
