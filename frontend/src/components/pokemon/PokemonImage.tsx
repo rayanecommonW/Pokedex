@@ -1,6 +1,5 @@
 import React from 'react';
-import type { PokemonSpriteDetails } from '../../models/pokemon.models'; // Adjust path if needed
- // Adjust path if needed
+import type { PokemonSpriteDetails } from '../../models/pokemon.models';
 
 interface PokemonImageProps {
   sprites: PokemonSpriteDetails;

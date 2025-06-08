@@ -10,8 +10,7 @@ export class PokemonController {
   constructor(private readonly pokemonService: PokemonService) {}
 
   /**
-   * Handles GET requests to /pokemon/:identifier
-   * name or id
+   * Handles GET requests to /pokemon/:identifier (name or id)
    */
   @Get(':identifier')
   async findOne(@Param('identifier') identifier: string): Promise<PokemonResponseDto> {
@@ -27,8 +26,10 @@ export class PokemonController {
     try {
       const pokemonData = await this.pokemonService.findOneByIdentifier(identifier);
       return pokemonData;
+
+
+      //more error throwing
     } catch (error) {
-      // Re-throw known exceptions (NotFoundException, HttpException) from the service
       if (error instanceof NotFoundException || error instanceof HttpException) {
         throw error;
       }

@@ -27,7 +27,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
         <div
           className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white border-4 border-black rounded-full shadow-lg flex items-center justify-center
                      hover:scale-110 transition-transform duration-200"
-          style={{ top: '3.75rem' }} // 3.75rem ≈ 60px, pour aligner le centre du bouton sur le trait noir
+          style={{ top: '3.75rem' }} // aligner le centre du bouton sur le trait noir
         >
           <div className="w-4 h-4 bg-black rounded-full"></div>
         </div>

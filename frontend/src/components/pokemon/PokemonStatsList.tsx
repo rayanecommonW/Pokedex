@@ -1,8 +1,8 @@
 // Lists Pokémon base stats
 
 import React from 'react';
-import type { PokemonStatInfo } from '../../models/pokemon.models'; // Adjust path
- // Adjust path
+import type { PokemonStatInfo } from '../../models/pokemon.models';
+
 
 interface PokemonStatsListProps {
   stats: PokemonStatInfo[];

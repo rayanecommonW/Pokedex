@@ -1,20 +1,19 @@
 // src/main.ts
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { Logger } from '@nestjs/common'; // Import Logger
+import { Logger } from '@nestjs/common';
 import helmet from 'helmet';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const logger = new Logger('Bootstrap'); // Create a logger instance for bootstrap
+  const logger = new Logger('Bootstrap');
 
-  // Enable CORS
-  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173'; // Default to Vite's port
+  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
   app.use(helmet());
   app.enableCors({
-    origin: frontendUrl, // Allow requests from your Vite frontend port
-    methods: 'GET',      // Specify allowed methods (only GET is needed for this app)
-    credentials: true,   // If you were to use cookies/sessions
+    origin: frontendUrl, 
+    methods: 'GET',
+    credentials: true,
   });
   logger.log(`CORS enabled for origin: ${frontendUrl}`);
 

@@ -10,7 +10,7 @@ interface PokemonTypesListProps {
 const PokemonTypesList: React.FC<PokemonTypesListProps> = ({ types }) => {
   if (!types || types.length === 0) return <p>No types listed.</p>;
   return (
-        <div className="mb-4"> {/* Added a bottom margin for spacing below this component */}
+        <div className="mb-4"> 
           <strong className="block text-sm font-medium text-gray-700 mb-1">Types:</strong>
           <ul className="flex flex-wrap gap-2 mt-1">
             {types.map((typeInfo) => (

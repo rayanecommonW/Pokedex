@@ -14,10 +14,6 @@ export class PokemonService {
 
   /**
    * Fetches Pokémon data from the PokeAPI by its name or ID.
-   * @param identifier The name (string) or ID (number) of the Pokémon.
-   * @returns A Promise resolving to the Pokémon data structured as PokemonResponseDto.
-   * @throws NotFoundException if the Pokémon is not found in PokeAPI.
-   * @throws HttpException for other API request failures or unexpected errors.
    */
   async findOneByIdentifier(identifier: string | number): Promise<PokemonResponseDto> {
     const lookupIdentifier = typeof identifier === 'string' ? identifier.toLowerCase() : identifier;
@@ -28,13 +24,13 @@ export class PokemonService {
       // Use firstValueFrom to convert Observable to Promise for async/await
       const { data: rawPokemonData } = await firstValueFrom(
         this.httpService.get<any>(url).pipe( // Specify <any> for now, as PokeAPI has a very complex structure
+          
+          // Classic error handling
           catchError((error: AxiosError) => {
             if (error.response?.status === 404) {
               this.logger.warn(`Pokemon with identifier "${lookupIdentifier}" not found at PokeAPI.`);
               throw new NotFoundException(`Pokemon with identifier "${lookupIdentifier}" not found.`);
             }
-
-            // Classic error handling
             this.logger.error(`PokeAPI request failed for identifier "${lookupIdentifier}": Status ${error.response?.status}`, error.response?.data || error.message);
             throw new HttpException(
               'Failed to fetch data from PokeAPI',
@@ -48,8 +44,8 @@ export class PokemonService {
       const pokemonData: PokemonResponseDto = {
         id: rawPokemonData.id,
         name: rawPokemonData.name,
-        types: rawPokemonData.types, // Assuming structure matches; could be further refined
-        sprites: { // Select specific sprites, prioritizing official artwork
+        types: rawPokemonData.types,
+        sprites: {
             front_default: rawPokemonData.sprites.front_default,
             other: {
                 dream_world: rawPokemonData.sprites.other?.dream_world,
@@ -59,8 +55,8 @@ export class PokemonService {
         },
         height: rawPokemonData.height,
         weight: rawPokemonData.weight,
-        abilities: rawPokemonData.abilities, // Assuming structure matches
-        stats: rawPokemonData.stats,         // Assuming structure matches
+        abilities: rawPokemonData.abilities,
+        stats: rawPokemonData.stats,
       };
 
       // More logging

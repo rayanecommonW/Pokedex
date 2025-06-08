@@ -32,7 +32,7 @@ const PokemonSearch: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  }, [searchTerm]); // Dependency: re-create if searchTerm changes (though it's used on trigger)
+  }, [searchTerm]);
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {

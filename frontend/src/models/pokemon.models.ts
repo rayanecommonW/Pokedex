@@ -1,6 +1,4 @@
-// i might not need this ngl..
-
-
+// i might not need this if i import the dto from backend
 
 export interface PokemonTypeInfo {
   slot: number;

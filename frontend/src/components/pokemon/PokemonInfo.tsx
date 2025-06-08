@@ -3,8 +3,8 @@
 import React from 'react';
 
 interface PokemonInfoProps {
-  height: number; // in decimetres
-  weight: number; // in hectograms
+  height: number;
+  weight: number;
 }
 
 const PokemonInfo: React.FC<PokemonInfoProps> = ({ height, weight }) => {
